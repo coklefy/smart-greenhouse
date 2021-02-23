@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Greenhouse</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" ></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"></script>
+
+     
+      
+</head>
+
+<body onload="">
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Greenhouse FrontEnd</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="#home" id="homeg">Home</a>
+                </li>
+                <li>
+                    <a href="#umidity" id="umid">Umidity</a>
+                </li>
+                <li>
+                    <a href="#pump" id="pump">pump status</a>
+                </li>
+                <li>
+                    <a href="#conf" id="confclick">Configuration </a>
+                </li>
+                
+            </ul>
+
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Greenhouse</span>
+                    </button>
+                    
+                    <label for="mode" id="modality">MANUAL MODE</label>
+                </div>
+            </nav>
+           <div class="table-wrapper-scroll-y my-custom-scrollbar" > 
+               
+               <div class='imagine' id='firstpage'>
+                    <img  id="logo" src="img/logo.png" alt="greenhouse">
+                    
+                    <div>
+                        <p> WELCOME TO GREENHOUSE SERVER </P> 
+                        
+                        <p>
+                            if you are using this page then the server is in execution.
+                        </p>
+                        <p>
+                            You can see information about the configuration of the service port,
+                            pump status and umidity value and irrigation mode; 
+                        </p>
+                        <p>
+                            the data is taken from the server.
+                        </p>               
+                    </div>
+                        
+               </div>    
+               
+            <table class="table table-bordered table-striped mb-0" id="umiditya" style="display: none">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">DATA</th>
+                    <th scope="col">NAME</th>
+                    <th scope="col">VALUE</th>
+                  </tr>
+                </thead>
+                <tbody id="umidityTable">
+
+                </tbody>
+              </table>
+               
+                <table class="table table-bordered table-striped mb-0" id="pumpa" style="display: none">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">DATA</th>
+                    <th scope="col">INFO</th>
+                  </tr>
+                </thead>
+                <tbody id="pumpTable">
+
+                </tbody>
+              </table>
+               
+            <table class="table table-bordered table-striped mb-0" id="configuration" style="display: none">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">SERVICE</th>
+                    <th scope="col">PORT</th>
+                  </tr>
+                </thead>
+                <tbody id="serviceconftable">
+
+                </tbody>
+              </table>
+               
+               <div id="logs" style="display: none">
+                   
+               </div>
+           
+               
+
+             </div>  
+            
+              
+        </div>
+         
+    </div>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    
+    <script src="js/greenhouse.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+        
+         $(document).ready(function () {
+             $('#umid').click(function(){
+                readFromHerdd(); 
+                $('#umiditya').show();
+                $('#pumpa').hide();
+                $('#configuration').hide();
+                $('#firstpage').hide();
+             });
+
+             console.log("click open table");
+              $('#pump').click(function(){
+                readPumpStatus();
+                $('#umiditya').hide();
+                $('#pumpa').show();
+                $('#configuration').hide();
+                $('#firstpage').hide();
+              });
+              
+                $('#confclick').click(function(){
+                 readServerConfig();
+                $('#umiditya').hide();
+                $('#pumpa').hide();
+                $('#configuration').show();
+                $('#firstpage').hide();
+              });
+              
+              $('#homeg').click(function(){
+                $('#umiditya').hide();
+                $('#pumpa').hide();
+                $('#configuration').hide();
+                $('#firstpage').show();
+              });
+              
+              readmode();
+
+         });
+
+         
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
